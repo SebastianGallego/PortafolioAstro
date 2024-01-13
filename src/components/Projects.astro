@@ -1,0 +1,69 @@
+---
+import React from "./icons/React.astro";
+import Tailwind from "./icons/Tailwind.astro";
+import Firebase from "./icons/Firebase.astro";
+import Vite from "./icons/Vite.astro";
+
+const TAGS = {
+  NEXT: {
+    name: "React",
+    class: "bg-white text-black",
+    icon: React,
+  },
+  TAILWIND: {
+    name: "Tailwind CSS",
+    class: "bg-[#003159] text-white",
+    icon: Tailwind,
+  },
+  FIREBASE: {
+    name: "Firebase",
+    class: "bg-[#003159] text-white",
+    icon: Firebase,
+  },
+  VITE: {
+    name: "Vite",
+    class: "bg-[#003159] text-white",
+    icon: Vite,
+  },
+};
+const PROJECTS = [
+  {
+    title: "Cotizador de Seguros",
+    description:
+      "Simulador de un cotizador de seguros. Según las opciones seleccionadas la aplicación calcula la cuota mensual de la poliza del seguro. Almacena en una Base de Datos de Firebase",
+    link: " https://cotizador-sgallego.netlify.app",
+    github: "https://github.com/SebastianGallego/cotizador-integrador",
+    image: "/cotizador.jpg",
+    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.FIREBASE, TAGS.VITE],
+  },
+];
+---
+
+{
+  PROJECTS.map(({ image, title, description, tags }) => (
+    <article>
+      <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
+        {title}
+      </h3>
+      <p class="text-lg mb-4 text-pretty">{description}</p>
+      <ul class="flex gap-x-2 flex-row mb-2">
+        {tags.map((tag) => (
+          <li>
+            <span
+              class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 border border-white/10`}
+            >
+              <tag.icon class="size-4" />
+              {tag.name}
+            </span>
+          </li>
+        ))}
+      </ul>
+      <img
+        loading="lazy"
+        class="rounded shadow-2xl shadow-white/10 aspect-video"
+        src={image}
+        alt={`Captura de pantalla del proyecto ${image}`}
+      />
+    </article>
+  ))
+}
