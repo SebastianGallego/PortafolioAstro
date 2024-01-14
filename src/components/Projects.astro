@@ -3,9 +3,13 @@ import React from "./icons/React.astro";
 import Tailwind from "./icons/Tailwind.astro";
 import Firebase from "./icons/Firebase.astro";
 import Vite from "./icons/Vite.astro";
+import Bootstrap from "./icons/Bootstrap.astro";
+import Js from "./icons/Js.astro";
+import Css from "./icons/Css.astro";
+import Html from "./icons/Html.astro";
 
 const TAGS = {
-  NEXT: {
+  REACT: {
     name: "React",
     class: "bg-white text-black",
     icon: React,
@@ -25,28 +29,63 @@ const TAGS = {
     class: "bg-[#003159] text-white",
     icon: Vite,
   },
+
+  BOOTSTRAP: {
+    name: "Bootstrap",
+    class: "bg-[#003159] text-white",
+    icon: Bootstrap,
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-[#003159] text-white",
+    icon: Css,
+  },
+  HTML: {
+    name: "HTML",
+    class: "bg-[#003159] text-white",
+    icon: Html,
+  },
+  JS: {
+    name: "JS",
+    class: "bg-[#003159] text-white",
+    icon: Js,
+  },
 };
 const PROJECTS = [
   {
     title: "Cotizador de Seguros",
     description:
-      "Simulador de un cotizador de seguros. Según las opciones seleccionadas la aplicación calcula la cuota mensual de la poliza del seguro. Almacena en una Base de Datos de Firebase",
+      "Simulador de un cotizador de seguros. Almacenamiento en una BD de Firebase",
     link: " https://cotizador-sgallego.netlify.app",
     github: "https://github.com/SebastianGallego/cotizador-integrador",
     image: "/cotizador.jpg",
-    tags: [TAGS.NEXT, TAGS.TAILWIND, TAGS.FIREBASE, TAGS.VITE],
+    tags: [TAGS.REACT, TAGS.TAILWIND, TAGS.FIREBASE, TAGS.VITE],
+  },
+  {
+    title: "Tienda Decatlon",
+    description: "Simulador de eComerce de Productos Decatlon.",
+    link: " https://app-decathlon.netlify.app/",
+    github: "https://github.com/SebastianGallego/App-Decatlhon",
+    image: "/decathlon.jpg",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.JS, TAGS.BOOTSTRAP],
   },
 ];
 ---
 
 {
   PROJECTS.map(({ image, title, description, tags }) => (
-    <article>
-      <h3 class="text-2xl font-semibold text-yellow-800 dark:text-yellow-200 mb-2">
+    <article class="max-w-5xl p-6 mb-10 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-700 dark:border-gray-700 ">
+      <h3 class="text-2xl font-semibold text-blue-800 dark:text-blue-300 mb-2 ">
         {title}
       </h3>
-      <p class="text-lg mb-4 text-pretty">{description}</p>
-      <ul class="flex gap-x-2 flex-row mb-2">
+      <p class="text-lg mb-4 text-pretty text-gray-400">{description}</p>
+      <img
+        loading="lazy"
+        class="rounded shadow-xl shadow-white/10 aspect-video"
+        src={image}
+        alt={`Captura de pantalla del proyecto ${image}`}
+      />
+      <ul class="flex gap-x-2 flex-row mt-4">
         {tags.map((tag) => (
           <li>
             <span
@@ -58,12 +97,6 @@ const PROJECTS = [
           </li>
         ))}
       </ul>
-      <img
-        loading="lazy"
-        class="rounded shadow-2xl shadow-white/10 aspect-video"
-        src={image}
-        alt={`Captura de pantalla del proyecto ${image}`}
-      />
     </article>
   ))
 }
